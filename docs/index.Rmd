@@ -1,0 +1,105 @@
+---
+title: "Homework 3"
+author: "Janavi Kolpekwar"
+date: "2025-09-25"
+output:
+  pdf_document:
+    latex_engine: xelatex
+  html_document: default
+---
+
+Loading the data
+```{r}
+df <- read.csv("homework3_data.csv")
+```
+
+Question 1: Make a recommendation to the company: Should they commit to redesigning the web site based on the criteria for success that they laid out?
+```{r}
+library(dplyr)
+# Summarize performance by design group
+summary_stats <- df %>%
+  group_by(design) %>%
+  summarise(
+    avg_sales = mean(sales),
+    avg_nps   = mean(nps),
+    .groups = "drop"
+  )
+print(summary_stats)
+```
+
+
+Based on the company’s criteria for success (increasing sales and improving customer satisfaction), the redesign meets and exceeds the benchmarks.
+The company should commit to rolling out the redesigned website.
+
+Question 2: Provide supporting evidence for your recommendation. You can use any statistical tools you want, but (a) you must use at least 2 graphical presentations that support your recommendation; (b) You must estimate how much sales will increase/decrease if the redesign is done; and (c) you must address the question of whether the redesign will lead to an average increase in sales of at least $1.80 per customer.
+
+Part (a)- Graphical Evidence
+
+```{r}
+library(ggplot2)
+library(dplyr)
+
+#SweetGreen company color selection
+custom_colors <- c("#29493F", "#EDFF64")
+
+# Boxplot of sales by design
+ggplot(df, aes(x = factor(design), y = sales, fill = factor(design))) +
+  geom_boxplot() +
+  scale_fill_manual(values = custom_colors) +
+  labs(x = "Website Design (0 = Old, 1 = New)", y = "Sales",
+       title = "Distribution of Sales by Website Design") +
+  theme_minimal()
+
+# Bar chart of average sales and NPS
+summary_stats <- df %>%
+  group_by(design) %>%
+  summarise(
+    avg_sales = mean(sales),
+    avg_nps   = mean(nps),
+    .groups = "drop"
+  )
+
+ggplot(summary_stats, aes(x = factor(design), y = avg_sales, fill = factor(design))) +
+  geom_col(position = "dodge") +
+  scale_fill_manual(values = custom_colors) +
+  geom_text(aes(label = round(avg_sales, 2)), vjust = -0.5) +
+  labs(x = "Website Design (0 = Old, 1 = New)", y = "Average Sales",
+       title = "Average Sales by Website Design") +
+  theme_minimal()
+
+```
+Part (b) - Estimated Sales Change 
+From the group means:
+
+35.5−31.8≈3.66
+35.5−31.8≈3.66
+
+On average, sales are expected to increase by about $3.66 per customer if the redesign is implemented.
+
+
+Part (c) - Does the redesign lead to an average increase in sales of at least $1.80 per customer.
+Yes. The estimated increase ($3.66) is greater than the benchmark of $1.80. Thus, the redesign more than satisfies the company’s stated goal for sales improvement.
+
+Based on the graphical evidence, the redesign should be adopted. It leads to higher sales and improved NPS, with an expected sales gain of about $3.66 per customer, comfortably exceeding the $1.80 threshold.
+
+Question 3: 
+```{r}
+library(colorfindr)
+company_website <- get_colors("~/Desktop/Screenshot 2025-09-25 at 12.20.52 AM.png")
+company_website
+```
+
+```{r}
+plot_colors(company_website[1:1000, ])
+
+```
+
+Question 4: Consider your final recommendation as the primary statement. State an alternative statement and make a fault tree for that statement
+
+Based on the evidence, the final recommendation is that the company should commit to the redesign, as it produces an average sales increase of about $3.66 per customer and higher NPS, comfortably exceeding the $1.80 threshold for success. An alternative statement, however, is that the redesign should not be adopted, since the observed improvements may be due to chance, limited sample size, or external factors, and thus may not represent a sustainable long-term benefit.
+
+
+
+
+
+
