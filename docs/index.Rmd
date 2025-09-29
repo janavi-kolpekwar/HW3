@@ -91,7 +91,7 @@ t-test Summary Stat:
 t.test(sales ~ design, data=df)
 ```
 
-### Final Company Report with follow-up considerations: 
+### Final Company Report 
 
 #### Primary Recommendation
 - Based on the statistical analysis report, the company should commit to redesigning the website. The analysis strongly supports adopting the New website design, as both the boxplot and bar chart show consistently higher sales (≈ 35.5 vs. 31.8) with an average increase of about 3.66 units. The Welch t-test (p ≈ 5 × 10⁻¹⁴) provides overwhelming statistical evidence that this difference is not due to chance, confirming the redesign has a significant and practically meaningful impact on sales.
@@ -108,10 +108,10 @@ t.test(sales ~ design, data=df)
 #### Statistical Standpoint
 - From a statistical standpoint,the Welch two-sample t-test confirms that this difference is highly significant. The p-value of ~5 × 10⁻¹⁴ and a confidence interval excluding zero reinforce that the observed improvement is not due to random variation, but reflects a consistent and reliable gain.
 
-#### p-val Considerarion
+#### p-val Consideration
 - This very low p-value indicates overwhelming evidence in favor of the New design, making it highly unlikely that the difference arose by chance. The findings therefore support moving forward with the redesign as a data-driven decision.
 
-#### Overal Analysis
+#### Overall Analysis
 - While the evidence support redesign, it's important to consider the alternative explanations for the observed increase in sales: Factors such as seasonal demand, short-term promotions, or the novelty of a new interface could also play a role in boosting sales. To ensure long-term success, the company should continue monitoring both sales and other key metrics such as Net Promoter Score (NPS) to validate that the redesign sustains its impact over time.
 
 
