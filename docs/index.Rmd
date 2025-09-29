@@ -6,6 +6,7 @@ output:
   pdf_document:
     latex_engine: xelatex
   html_document: default
+  word_document: default
 ---
 
 Loading Libraries & Reading in Data
@@ -85,24 +86,33 @@ avg_sales_increase <- sales_total_stats$mean_sales[2] - sales_total_stats$mean_s
 avg_sales_increase
 ```
 
-T-test Summary Stat: 
+t-test Summary Stat: 
 ```{r}
 t.test(sales ~ design, data=df)
 ```
 
-Primary Recommendation: 
+### Final Company Report with follow-up considerations: 
 
-Alternative Statement: 
+#### Primary Recommendation
+- Based on the statistical analysis report, the company should commit to redesigning the website. The analysis strongly supports adopting the New website design, as both the boxplot and bar chart show consistently higher sales (≈ 35.5 vs. 31.8) with an average increase of about 3.66 units. The Welch t-test (p ≈ 5 × 10⁻¹⁴) provides overwhelming statistical evidence that this difference is not due to chance, confirming the redesign has a significant and practically meaningful impact on sales.
 
-Based on the boxplot...
+#### Alternative Statement
+- Although the results strongly favor the New design, it’s worth considering other possible explanations for the sales increase. Seasonal shifts, marketing promotions, or broader market conditions may have played a role, and the initial novelty of the redesign could temporarily boost engagement without lasting effects. The very low p-value points to a real difference between designs, but further testing and tracking additional measures like NPS would give a clearer picture of the redesign’s long-term impact.
 
-Based on the histogram...
+#### Graphical Evidence 1
+- Based on the boxplot, the distribution of sales is clearly higher under the New website design, with both the median and overall range shifted upward compared to the Old design. This suggests that the redesign not only raised average performance but also improved consistency in sales outcomes.
 
-From a statistical standpoint...
+#### Graphical Evidence 2
+- Based on the histogram, the difference in mean sales is striking as the New design generated an average of about 35.5 units compared to 31.8 under the Old design, a meaningful increase of roughly 3.7 units. This provides strong visual evidence that the redesign has a positive effect on performance.
 
-This very low p-value indicates...
+#### Statistical Standpoint
+- From a statistical standpoint,the Welch two-sample t-test confirms that this difference is highly significant. The p-value of ~5 × 10⁻¹⁴ and a confidence interval excluding zero reinforce that the observed improvement is not due to random variation, but reflects a consistent and reliable gain.
 
-While the evidence support redesign, it's important to consider the alternative explanations for the observed increase in sales: 
+#### p-val Considerarion
+- This very low p-value indicates overwhelming evidence in favor of the New design, making it highly unlikely that the difference arose by chance. The findings therefore support moving forward with the redesign as a data-driven decision.
+
+#### Overal Analysis
+- While the evidence support redesign, it's important to consider the alternative explanations for the observed increase in sales: Factors such as seasonal demand, short-term promotions, or the novelty of a new interface could also play a role in boosting sales. To ensure long-term success, the company should continue monitoring both sales and other key metrics such as Net Promoter Score (NPS) to validate that the redesign sustains its impact over time.
 
 
 
