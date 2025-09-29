@@ -3,9 +3,9 @@ title: "Homework 3"
 author: "Janavi Kolpekwar"
 date: "2025-09-25"
 output:
+  html_document: default
   pdf_document:
     latex_engine: xelatex
-  html_document: default
   word_document: default
 ---
 
@@ -28,7 +28,7 @@ table(df$design)
 Distinct Color Selection (e-commerce Company of Choice: Etsy)
 
 ```{r}
-colors_data <- get_colors("~/Desktop/etsyimage.png")
+colors_data <- get_colors("etsyimage.png")
 print(colors_data)
 ```
 
